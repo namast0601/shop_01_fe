@@ -57,7 +57,13 @@
                     <div class="product-info">
                         <h3>Trầm Hương Loại {{item}}</h3>
                         <p class="origin">Nha Trang, Việt Nam</p>
-                        <p class="price">{{ 1000000 * item | currency:'VND' }}</p>
+                        <div class="action-row">
+                            <p class="price">{{ 1000000 * item | currency:'VND' }}</p>
+                            <button class="btn-add-cart">
+                                <span class="material-icons">shopping_bag</span>
+                                Thêm vào giỏ
+                            </button>
+                        </div>
                     </div>
                 </div>
                 }
