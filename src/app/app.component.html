@@ -5,9 +5,10 @@
   <header class="zen-header" [class.scrolled]="isScrolled">
     <div class="container header-inner">
       <nav class="nav-left">
-        <a routerLink="/" class="nav-link">Trang chủ</a>
+        <a routerLink="/" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Trang
+          chủ</a>
         <a routerLink="/products" class="nav-link" routerLinkActive="active">Sản phẩm</a>
-        <a href="#" class="nav-link">Giới thiệu</a>
+        <a routerLink="/about" class="nav-link" routerLinkActive="active">Giới thiệu</a>
       </nav>
 
       <a routerLink="/" class="logo serif-italic">
@@ -16,8 +17,8 @@
       </a>
 
       <div class="nav-right">
-        <a href="#" class="nav-link">Kiến thức</a>
-        <a href="#" class="nav-link">Liên hệ</a>
+        <a routerLink="/knowledge" class="nav-link" routerLinkActive="active">Kiến thức</a>
+        <a routerLink="/contact" class="nav-link" routerLinkActive="active">Liên hệ</a>
         <button class="icon-btn">
           <span class="material-icons">search</span>
         </button>
