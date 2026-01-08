@@ -1,0 +1,33 @@
+<div class="app-container">
+  <!-- Header -->
+  <header class="glass-panel header">
+    <div class="container header-content">
+      <a routerLink="/" class="logo text-gradient">Shop01</a>
+
+      <nav class="nav-links">
+        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-item">Home</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="btn-icon">
+          <span class="material-icons">search</span>
+        </button>
+        <button class="btn-icon">
+          <span class="material-icons">shopping_bag</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <router-outlet />
+  </main>
+
+  <!-- Footer (Simple) -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 Shop01. Premium Experience.</p>
+    </div>
+  </footer>
+</div>
