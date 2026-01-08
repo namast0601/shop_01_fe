@@ -21,9 +21,12 @@
         <button class="icon-btn">
           <span class="material-icons">search</span>
         </button>
-        <button class="icon-btn">
+        <a routerLink="/cart" class="icon-btn cart-btn-wrapper">
           <span class="material-icons">shopping_bag</span>
-        </button>
+          @if (cartCount() > 0) {
+          <span class="cart-badge">{{cartCount()}}</span>
+          }
+        </a>
       </div>
     </div>
   </header>
@@ -61,4 +64,5 @@
       </div>
     </div>
   </footer>
+  <app-toast />
 </div>

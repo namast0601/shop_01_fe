@@ -1,5 +1,7 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CartService, Product } from '../../services/cart.service';
+import { ToastService } from '../../components/toast/toast.component';
 
 @Component({
   selector: 'app-home',
@@ -9,6 +11,31 @@ import { CommonModule } from '@angular/common';
 })
 export class HomeComponent {
   @ViewChild('scroller') scroller!: ElementRef<HTMLDivElement>;
+
+  // Inject services
+  private cartService = inject(CartService);
+  private toastService = inject(ToastService);
+
+  addedItems = new Set<number>();
+
+  addToCart(item: number) {
+    const product: Product = {
+      id: item,
+      name: `Trầm Hương Loại ${item}`,
+      price: 1000000 * item,
+      image: 'https://thienlocviet.vn/uploads/products/Huong%20tram%20Cao%20cap%2030cm.JPG',
+      type: 'Nha Trang, Việt Nam'
+    };
+
+    this.cartService.addToCart(product);
+    this.toastService.show(`Đã thêm "${product.name}" vào giỏ hàng`);
+
+    // Show feedback
+    this.addedItems.add(item);
+    setTimeout(() => {
+      this.addedItems.delete(item);
+    }, 2000);
+  }
 
   scrollLeft() {
     this.scrollByItem(-1);
