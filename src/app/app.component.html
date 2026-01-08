@@ -4,7 +4,12 @@
   <!-- Minimalist Zen Header -->
   <header class="zen-header" [class.scrolled]="isScrolled">
     <div class="container header-inner">
-      <nav class="nav-left">
+      <!-- Hamburger (Mobile) -->
+      <button class="hamburger-btn" (click)="toggleMenu()">
+        <span class="material-icons">menu</span>
+      </button>
+
+      <nav class="nav-left desktop-only">
         <a routerLink="/" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Trang
           chủ</a>
         <a routerLink="/products" class="nav-link" routerLinkActive="active">Sản phẩm</a>
@@ -17,9 +22,11 @@
       </a>
 
       <div class="nav-right">
-        <a routerLink="/knowledge" class="nav-link" routerLinkActive="active">Kiến thức</a>
-        <a routerLink="/contact" class="nav-link" routerLinkActive="active">Liên hệ</a>
-        <button class="icon-btn">
+        <nav class="desktop-only">
+          <a routerLink="/knowledge" class="nav-link" routerLinkActive="active">Kiến thức</a>
+          <a routerLink="/contact" class="nav-link" routerLinkActive="active">Liên hệ</a>
+        </nav>
+        <button class="icon-btn search-btn">
           <span class="material-icons">search</span>
         </button>
         <a routerLink="/cart" class="icon-btn cart-btn-wrapper">
@@ -31,6 +38,25 @@
       </div>
     </div>
   </header>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu-overlay" [class.active]="isMenuOpen" (click)="closeMenu()"></div>
+  <div class="mobile-menu-sidebar" [class.active]="isMenuOpen">
+    <button class="close-btn" (click)="closeMenu()">
+      <span class="material-icons">close</span>
+    </button>
+    <div class="mobile-nav-links">
+      <a routerLink="/" (click)="closeMenu()" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Trang
+        chủ</a>
+      <a routerLink="/products" (click)="closeMenu()" routerLinkActive="active">Sản phẩm</a>
+      <a routerLink="/about" (click)="closeMenu()" routerLinkActive="active">Giới thiệu</a>
+      <a routerLink="/knowledge" (click)="closeMenu()" routerLinkActive="active">Kiến thức</a>
+      <a routerLink="/contact" (click)="closeMenu()" routerLinkActive="active">Liên hệ</a>
+    </div>
+    <div class="mobile-menu-footer">
+      <p class="serif-italic">Tĩnh Incense</p>
+    </div>
+  </div>
 
   <!-- Main Content -->
   <main>

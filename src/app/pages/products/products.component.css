@@ -367,7 +367,63 @@
     }
 
     .sidebar {
+        display: block;
+        /* Show sidebar */
+        margin-bottom: 30px;
+        position: relative;
+        z-index: 10;
+    }
+
+    .filter-list {
+        display: flex;
+        overflow-x: auto;
+        gap: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .filter-list li {
+        white-space: nowrap;
+        border-bottom: none;
+        padding: 8px 16px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .filter-list li.active {
+        background: var(--c-gold);
+        color: #1a1510;
+        border-color: var(--c-gold);
+    }
+
+    /* Hide Count on mobile pills */
+    .count {
         display: none;
-        /* Hide sidebar on mobile for now - normally would be off-canvas */
+    }
+
+    .filter-group {
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .controls-bar {
+        flex-direction: column;
+        gap: 16px;
+        align-items: flex-start;
+    }
+
+    .product-grid {
+        grid-template-columns: 1fr;
+        /* Full width cards */
+    }
+
+    .page-title {
+        font-size: 2.5rem;
+    }
+
+    .parallax-header {
+        height: 300px;
     }
 }
