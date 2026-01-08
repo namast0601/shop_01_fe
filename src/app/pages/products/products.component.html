@@ -1,0 +1,93 @@
+<div class="products-page">
+    <div class="parallax-header">
+        <div class="header-content">
+            <span class="sub-title text-gold">Bộ Sưu Tập</span>
+            <h1 class="page-title serif-italic">Tinh Hoa Trầm Việt</h1>
+            <p class="header-desc">Hương thơm của đất trời, kết tinh qua ngàn năm.</p>
+        </div>
+    </div>
+
+    <div class="container products-layout">
+        <!-- Sidebar Filter -->
+        <aside class="sidebar glass-panel">
+            <div class="filter-group">
+                <h3>Danh Mục</h3>
+                <ul class="filter-list">
+                    @for (cat of categories; track cat) {
+                    <li [class.active]="selectedCategory === cat" (click)="filterCategory(cat)">
+                        {{cat}}
+                        <span class="count">24</span>
+                    </li>
+                    }
+                </ul>
+            </div>
+
+            <div class="filter-group">
+                <h3>Khoảng Giá</h3>
+                <div class="price-range">
+                    <input type="range" class="range-slider" [min]="0" [max]="maxPrice" [value]="priceFilter"
+                        (input)="updatePrice($event)">
+                    <div class="range-labels">
+                        <span>0đ</span>
+                        <span>{{priceFilter | currency:'VND'}}</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Product Grid -->
+        <div class="main-content">
+            <div class="controls-bar glass-panel">
+                <span class="result-count">Hiển thị {{products.length}} sản phẩm</span>
+                <div class="sort-dropdown">
+                    <span>Sắp xếp:</span>
+                    <select>
+                        <option>Mới nhất</option>
+                        <option>Giá tăng dần</option>
+                        <option>Giá giảm dần</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="product-grid">
+                @for (product of products; track product.id) {
+                <div class="product-card fade-in-up" [style.animation-delay]="product.id * 50 + 'ms'">
+                    <div class="card-visual">
+                        <div class="smoke-overlay"></div>
+                        <img [src]="product.image" [alt]="product.name">
+                        <div class="card-overlay">
+                            <button class="btn-quick-view">
+                                <span class="material-icons">visibility</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-info">
+                        <span class="product-type">{{product.type}}</span>
+                        <h3 class="product-name">{{product.name}}</h3>
+                        <div class="price-row">
+                            <span class="price">{{product.price | currency:'VND'}}</span>
+                            <button class="btn-add-cart-mini" [class.added]="addedItems.has(product.id)"
+                                (click)="addToCart(product)">
+                                @if (addedItems.has(product.id)) {
+                                <span class="material-icons">check</span>
+                                } @else {
+                                <span class="material-icons">add_shopping_cart</span>
+                                }
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                }
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <button class="page-btn disabled"><span class="material-icons">chevron_left</span></button>
+                <button class="page-btn active">1</button>
+                <button class="page-btn">2</button>
+                <button class="page-btn">3</button>
+                <button class="page-btn"><span class="material-icons">chevron_right</span></button>
+            </div>
+        </div>
+    </div>
+</div>
