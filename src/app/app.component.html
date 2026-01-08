@@ -1,18 +1,27 @@
-<div class="app-container">
-  <!-- Header -->
-  <header class="glass-panel header">
-    <div class="container header-content">
-      <a routerLink="/" class="logo text-gradient">Shop01</a>
+<div class="grain-overlay"></div>
 
-      <nav class="nav-links">
-        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-item">Home</a>
+<div class="app-layout">
+  <!-- Minimalist Zen Header -->
+  <header class="zen-header" [class.scrolled]="isScrolled">
+    <div class="container header-inner">
+      <nav class="nav-left">
+        <a routerLink="/" class="nav-link">Trang chủ</a>
+        <a href="#" class="nav-link">Sản phẩm</a>
+        <a href="#" class="nav-link">Giới thiệu</a>
       </nav>
 
-      <div class="header-actions">
-        <button class="btn-icon">
+      <a routerLink="/" class="logo serif-italic">
+        <span class="logo-symbol">⚫</span>
+        Tĩnh
+      </a>
+
+      <div class="nav-right">
+        <a href="#" class="nav-link">Kiến thức</a>
+        <a href="#" class="nav-link">Liên hệ</a>
+        <button class="icon-btn">
           <span class="material-icons">search</span>
         </button>
-        <button class="btn-icon">
+        <button class="icon-btn">
           <span class="material-icons">shopping_bag</span>
         </button>
       </div>
@@ -24,10 +33,32 @@
     <router-outlet />
   </main>
 
-  <!-- Footer (Simple) -->
-  <footer class="footer">
+  <!-- Footer -->
+  <footer class="zen-footer">
     <div class="container">
-      <p>&copy; 2026 Shop01. Premium Experience.</p>
+      <div class="footer-content">
+        <div class="footer-brand">
+          <h2 class="serif-italic">Tĩnh</h2>
+          <p>Tinh hoa trầm hương - Tĩnh tại tâm hồn</p>
+        </div>
+        <div class="footer-links">
+          <div class="col">
+            <h3>Khám phá</h3>
+            <a href="#">Trầm Hương</a>
+            <a href="#">Kỳ Nam</a>
+            <a href="#">Dụng Cụ</a>
+          </div>
+          <div class="col">
+            <h3>Về Tĩnh</h3>
+            <a href="#">Triết Lý</a>
+            <a href="#">Nghệ Nhân</a>
+            <a href="#">Liên Hệ</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Tĩnh Incense. All rights reserved.</p>
+      </div>
     </div>
   </footer>
 </div>
