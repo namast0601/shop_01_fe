@@ -397,6 +397,17 @@
     box-shadow: 0 4px 12px rgba(198, 168, 124, 0.2);
 }
 
+.btn-add-cart:active {
+    transform: scale(0.95);
+}
+
+.btn-add-cart.added {
+    background: var(--c-gold);
+    color: #1a1510;
+    border-color: var(--c-gold);
+    border-width: 1px;
+}
+
 .btn-add-cart .material-icons {
     font-size: 16px;
 }

@@ -59,9 +59,14 @@
                         <p class="origin">Nha Trang, Việt Nam</p>
                         <div class="action-row">
                             <p class="price">{{ 1000000 * item | currency:'VND' }}</p>
-                            <button class="btn-add-cart">
+                            <button class="btn-add-cart" [class.added]="addedItems.has(item)" (click)="addToCart(item)">
+                                @if (addedItems.has(item)) {
+                                <span class="material-icons">check</span>
+                                Đã thêm
+                                } @else {
                                 <span class="material-icons">shopping_bag</span>
                                 Thêm vào giỏ
+                                }
                             </button>
                         </div>
                     </div>
@@ -86,7 +91,7 @@
                 <span class="section-label text-gold">Nghệ Thuật Thưởng Hương</span>
                 <h2 class="serif-italic">Khoảng Lặng Giữa Những Xô Bồ</h2>
                 <p class="text-reveal">
-                    Hương trầm thoang thoảng, một tách già nóng. Giây phút ta tìm về với bản ngã chân thật nhất.
+                    Hương trầm thoang thoảng, một tách trà nóng. Giây phút ta tìm về với bản ngã chân thật nhất.
                     Không chỉ là hương thơm, đó là liệu pháp cho tâm hồn.
                 </p>
                 <button class="btn btn-link">Đọc Câu Chuyện <span class="material-icons">east</span></button>

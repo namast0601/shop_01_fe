@@ -1,0 +1,92 @@
+<div class="cart-page">
+    <div class="container">
+
+        <div class="cart-header">
+            <h1 class="page-title serif-italic text-gold">Giỏ Hàng Của Bạn</h1>
+            <p class="cart-subtitle">
+                <span class="count">{{cartItems().length}} sản phẩm</span>
+                <span class="divider">/</span>
+                <span class="total">Tổng: {{total() | currency:'VND'}}</span>
+            </p>
+        </div>
+
+        @if (cartItems().length > 0) {
+        <div class="cart-grid">
+            <!-- Cart Items List -->
+            <div class="cart-items">
+                @for (item of cartItems(); track item.id) {
+                <div class="cart-item glass-panel">
+                    <div class="item-visual">
+                        <img [src]="item.image" [alt]="item.name">
+                    </div>
+
+                    <div class="item-details">
+                        <div class="item-header">
+                            <h3>{{item.name}}</h3>
+                            <span class="item-type">{{item.type}}</span>
+                        </div>
+
+                        <div class="item-price">
+                            {{item.price | currency:'VND'}}
+                        </div>
+
+                        <div class="item-actions">
+                            <div class="qty-control">
+                                <button class="qty-btn" (click)="updateQuantity(item, -1)">-</button>
+                                <span class="qty-val">{{item.quantity}}</span>
+                                <button class="qty-btn" (click)="updateQuantity(item, 1)">+</button>
+                            </div>
+
+                            <button class="btn-remove" (click)="removeItem(item.id)">
+                                <span class="material-icons">close</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                }
+            </div>
+
+            <!-- Summary Panel -->
+            <div class="cart-summary glass-panel">
+                <h3 class="summary-title serif-italic">Tổng Quan Đơn Hàng</h3>
+
+                <div class="summary-row">
+                    <span>Tạm tính</span>
+                    <span>{{total() | currency:'VND'}}</span>
+                </div>
+
+                <div class="summary-row">
+                    <span>Vận chuyển</span>
+                    <span>Miễn phí</span>
+                </div>
+
+                <div class="divider-line"></div>
+
+                <div class="summary-row total-row">
+                    <span>Tổng cộng</span>
+                    <span class="text-gold">{{total() | currency:'VND'}}</span>
+                </div>
+
+                <button routerLink="/checkout" class="btn-checkout">
+                    Thanh Toán Ngay
+                    <span class="material-icons">arrow_forward</span>
+                </button>
+
+                <p class="secure-note">
+                    <span class="material-icons">lock</span>
+                    Thanh toán bảo mật SSL
+                </p>
+            </div>
+        </div>
+        } @else {
+        <div class="empty-cart">
+            <span class="material-icons icon-empty">shopping_bag</span>
+            <h2>Giỏ hàng chưa có sản phẩm</h2>
+            <a routerLink="/" class="btn-continue">
+                Tiếp tục mua sắm
+            </a>
+        </div>
+        }
+
+    </div>
+</div>
