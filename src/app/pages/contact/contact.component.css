@@ -211,3 +211,14 @@ textarea:focus {
         font-size: 2.5rem;
     }
 }
+
+@media (max-width: 600px) {
+    .form-row {
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .contact-info {
+        padding: 24px;
+    }
+}
