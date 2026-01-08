@@ -14,6 +14,15 @@ export class AppComponent {
   isScrolled = false;
   cartService = inject(CartService);
   cartCount = this.cartService.cartCount;
+  isMenuOpen = false;
+
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  closeMenu() {
+    this.isMenuOpen = false;
+  }
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
