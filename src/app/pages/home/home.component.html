@@ -20,9 +20,9 @@
                     Khám phá nghệ thuật hương đạo cổ truyền trong không gian đương đại.
                 </p>
                 <div class="hero-actions">
-                    <button class="btn btn-outline">Khám Phá</button>
-                    <button class="btn btn-text">Xem Video <span
-                            class="material-icons">play_circle_outline</span></button>
+                    <button class="btn btn-outline" routerLink="/products">Bộ Sưu Tập</button>
+                    <button class="btn btn-text" routerLink="/about">Câu Chuyện <span
+                            class="material-icons">east</span></button>
                 </div>
             </div>
         </div>
@@ -38,6 +38,7 @@
         <div class="container header-block">
             <span class="section-label">Bộ Sưu Tập Mới</span>
             <h2 class="section-title">Hương Sắc <span class="serif-italic text-gold">Thiên Nhiên</span></h2>
+            <a routerLink="/products" class="view-all-link">Xem Tất Cả <span class="material-icons">east</span></a>
         </div>
 
         <!-- Mockup horizontal scroll container -->
@@ -94,7 +95,8 @@
                     Hương trầm thoang thoảng, một tách trà nóng. Giây phút ta tìm về với bản ngã chân thật nhất.
                     Không chỉ là hương thơm, đó là liệu pháp cho tâm hồn.
                 </p>
-                <button class="btn btn-link">Đọc Câu Chuyện <span class="material-icons">east</span></button>
+                <button routerLink="/about" class="btn btn-link">Đọc Câu Chuyện <span
+                        class="material-icons">east</span></button>
             </div>
         </div>
     </section>
@@ -123,4 +125,42 @@
         </div>
     </section>
 
+    <!-- JOURNAL SECTION -->
+    <section class="section journal-section">
+        <div class="container">
+            <div class="section-header center">
+                <span class="section-label">Kiến Thức & Sẻ Chia</span>
+                <h2 class="section-title">Góc <span class="serif-italic text-gold">Tĩnh Tại</span></h2>
+            </div>
+
+            <div class="journal-grid">
+                <a routerLink="/knowledge" class="journal-card">
+                    <div class="journal-img">
+                        <img src="https://thienlocviet.vn/uploads/products/Huong%20tram%20Cao%20cap%2030cm.JPG"
+                            alt="Huong dao">
+                    </div>
+                    <div class="journal-content">
+                        <span class="date">08/01/2024</span>
+                        <h3>Hương Đạo (Kodo) - Nghệ thuật lắng nghe mùi hương</h3>
+                        <span class="link">Đọc thêm</span>
+                    </div>
+                </a>
+                <a routerLink="/knowledge" class="journal-card">
+                    <div class="journal-img">
+                        <img src="https://thienlocviet.vn/uploads/products/Huong%20tram%20Cao%20cap%2030cm.JPG"
+                            alt="Tram huong">
+                    </div>
+                    <div class="journal-content">
+                        <span class="date">05/01/2024</span>
+                        <h3>5 Lợi ích của việc xông trầm mỗi sáng</h3>
+                        <span class="link">Đọc thêm</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="center-btn">
+                <a routerLink="/knowledge" class="btn btn-outline">Xem Tất Cả Bài Viết</a>
+            </div>
+        </div>
+    </section>
 </div>
