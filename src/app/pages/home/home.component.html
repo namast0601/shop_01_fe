@@ -1,48 +1,121 @@
-<section class="hero">
-    <div class="hero-bg">
-        <div class="glow glow-1"></div>
-        <div class="glow glow-2"></div>
-    </div>
+<div class="home-container">
 
-    <div class="container hero-content">
-        <h1 class="hero-title">
-            The Future of <br />
-            <span class="text-gradient">Digital Shopping.</span>
-        </h1>
+    <!-- HERO SECTION -->
+    <section class="hero-section">
+        <div class="hero-bg">
+            <!-- Simulated WebGL/Video Background (Dark texture + smoke hints) -->
+            <div class="bg-texture"></div>
+            <div class="smoke-layer smoke-1"></div>
+            <div class="smoke-layer smoke-2"></div>
+        </div>
 
-        <p class="hero-subtitle">
-            Discover a curated collection of premium products designed to elevate your lifestyle.
-            Experience quality like never before.
-        </p>
+        <div class="hero-content">
+            <h2 class="hero-slogan-vertical">Tĩnh Tại Tâm Hồn</h2>
+            <div class="hero-center">
+                <h1 class="hero-title">
+                    <span class="block-reveal">Tinh Hoa</span>
+                    <span class="block-reveal text-gold serif-italic">Trầm Hương</span>
+                </h1>
+                <p class="hero-desc">
+                    Khám phá nghệ thuật hương đạo cổ truyền trong không gian đương đại.
+                </p>
+                <div class="hero-actions">
+                    <button class="btn btn-outline">Khám Phá</button>
+                    <button class="btn btn-text">Xem Video <span
+                            class="material-icons">play_circle_outline</span></button>
+                </div>
+            </div>
+        </div>
 
-        <div class="hero-actions">
-            <button class="btn btn-primary">
-                Explore Collection
-                <span class="material-icons">arrow_forward</span>
+        <div class="scroll-indicator">
+            <span class="line"></span>
+            <span class="text">Cuộn xuống</span>
+        </div>
+    </section>
+
+    <!-- PRODUCT HIGHLIGHT (Horizontal Scroll) -->
+    <section class="section product-highlight">
+        <div class="container header-block">
+            <span class="section-label">Bộ Sưu Tập Mới</span>
+            <h2 class="section-title">Hương Sắc <span class="serif-italic text-gold">Thiên Nhiên</span></h2>
+        </div>
+
+        <!-- Mockup horizontal scroll container -->
+        <!-- Scroll Controls -->
+        <div class="scroller-wrapper">
+            <button class="nav-btn prev" (click)="scrollLeft()">
+                <span class="material-icons">chevron_left</span>
             </button>
-            <button class="btn btn-glass">
-                Learn More
+            <div class="product-scroller" #scroller>
+                @for(item of [1,2,3,4,5,6,7,8,9,10]; track item) {
+                <div class="product-item">
+                    <div class="product-visual">
+                        <div class="smoke-hint"></div>
+                        <img src="https://thienlocviet.vn/uploads/products/Huong%20tram%20Cao%20cap%2030cm.JPG"
+                            class="product-img" alt="Trầm Hương Product">
+                    </div>
+                    <div class="product-info">
+                        <h3>Trầm Hương Loại {{item}}</h3>
+                        <p class="origin">Nha Trang, Việt Nam</p>
+                        <div class="action-row">
+                            <p class="price">{{ 1000000 * item | currency:'VND' }}</p>
+                            <button class="btn-add-cart">
+                                <span class="material-icons">shopping_bag</span>
+                                Thêm vào giỏ
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                }
+            </div>
+            <button class="nav-btn next" (click)="scrollRight()">
+                <span class="material-icons">chevron_right</span>
             </button>
         </div>
-    </div>
-</section>
+    </section>
 
-<section class="features container">
-    <div class="feature-card glass-panel">
-        <span class="material-icons feature-icon">verified</span>
-        <h3>Premium Quality</h3>
-        <p>Only the best materials and craftsmanship.</p>
-    </div>
+    <!-- RITUAL EXPERIENCE -->
+    <section class="section ritual-section">
+        <div class="ritual-grid">
+            <div class="ritual-visual">
+                <div class="ink-mask"></div>
+                <img src="https://getwallpapers.com/wallpaper/full/d/b/6/1385305-vertical-calm-wallpaper-2880x1620-for-windows-7.jpg"
+                    alt="Ritual" class="ritual-img">
+            </div>
+            <div class="ritual-content">
+                <span class="section-label text-gold">Nghệ Thuật Thưởng Hương</span>
+                <h2 class="serif-italic">Khoảng Lặng Giữa Những Xô Bồ</h2>
+                <p class="text-reveal">
+                    Hương trầm thoang thoảng, một tách già nóng. Giây phút ta tìm về với bản ngã chân thật nhất.
+                    Không chỉ là hương thơm, đó là liệu pháp cho tâm hồn.
+                </p>
+                <button class="btn btn-link">Đọc Câu Chuyện <span class="material-icons">east</span></button>
+            </div>
+        </div>
+    </section>
 
-    <div class="feature-card glass-panel">
-        <span class="material-icons feature-icon">bolt</span>
-        <h3>Fast Shipping</h3>
-        <p>Get your products delivered in record time.</p>
-    </div>
+    <!-- PHILOSOPHY Parallax -->
+    <section class="section philosophy-section">
+        <div class="parallax-bg"></div>
+        <div class="container">
+            <div class="philosophy-timeline">
+                <div class="philo-item">
+                    <div class="year">01</div>
+                    <h3>Tinh Tuyển</h3>
+                    <p>Lựa chọn những phôi trầm quý giá nhất từ rừng già.</p>
+                </div>
+                <div class="philo-item">
+                    <div class="year">02</div>
+                    <h3>Chế Tác</h3>
+                    <p>Nghệ nhân đẽo gọt thủ công, giữ trọn vẹn hương mộc.</p>
+                </div>
+                <div class="philo-item">
+                    <div class="year">03</div>
+                    <h3>Thăng Hoa</h3>
+                    <p>Kết tinh văn hóa Á Đông trong từng làn khói.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <div class="feature-card glass-panel">
-        <span class="material-icons feature-icon">support_agent</span>
-        <h3>24/7 Support</h3>
-        <p>We are here to help you anytime, anywhere.</p>
-    </div>
-</section>
+</div>

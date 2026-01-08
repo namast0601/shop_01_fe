@@ -1,96 +1,160 @@
-.app-container {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
-
-.header {
+/* Zen Header */
+.zen-header {
     position: fixed;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: calc(100% - 48px);
-    max-width: var(--container-width);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--header-height);
     z-index: 1000;
-    padding: 0;
+    transition: all 0.4s var(--ease-slow);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    background: transparent;
 }
 
-.header-content {
+.zen-header.scrolled {
+    background: rgba(10, 8, 6, 0.85);
+    /* Dark semi-transparent background */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(198, 168, 124, 0.1);
+    /* Gold tint border */
     height: 70px;
+    /* Compress header on scroll */
+}
+
+.header-inner {
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 32px;
 }
 
 .logo {
-    font-size: 1.5rem;
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    text-transform: uppercase;
-}
-
-.nav-links {
+    font-size: 2rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
     display: flex;
-    gap: 32px;
+    align-items: center;
+    gap: 12px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: all 0.4s;
 }
 
-.nav-item {
-    font-size: 0.95rem;
-    font-weight: 500;
-    color: var(--color-text-muted);
+.zen-header.scrolled .logo {
+    font-size: 1.5rem;
+    /* Shrink logo */
+}
+
+.logo-symbol {
+    font-size: 0.8em;
+    color: var(--c-gold);
+}
+
+.nav-left,
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.nav-link {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--t-secondary);
     position: relative;
 }
 
-.nav-item:hover,
-.nav-item.active {
-    color: var(--color-text-main);
+.nav-link:hover {
+    color: var(--c-gold);
 }
 
-.nav-item::after {
+.nav-link::after {
     content: '';
     position: absolute;
     bottom: -4px;
     left: 50%;
     width: 0;
-    height: 2px;
-    background: var(--color-primary);
-    transition: all 0.3s;
+    height: 1px;
+    background: var(--c-gold);
+    transition: all 0.4s var(--ease-cinematic);
     transform: translateX(-50%);
 }
 
-.nav-item:hover::after {
+.nav-link:hover::after {
     width: 100%;
 }
 
-.header-actions {
+.icon-btn {
+    color: var(--t-primary);
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+.icon-btn:hover {
+    opacity: 1;
+    color: var(--c-gold);
+}
+
+/* Footer */
+.zen-footer {
+    background: #110e0b;
+    padding: 80px 0 40px;
+    border-top: 1px solid rgba(198, 168, 124, 0.1);
+}
+
+.footer-content {
     display: flex;
-    gap: 16px;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 60px;
 }
 
-.btn-icon {
-    color: var(--color-text-main);
-    padding: 8px;
-    border-radius: 50%;
-    transition: background 0.3s;
+.footer-brand h2 {
+    font-size: 3rem;
+    color: var(--c-gold);
+    margin-bottom: 16px;
 }
 
-.btn-icon:hover {
-    background: rgba(255, 255, 255, 0.1);
-    color: var(--color-primary);
+.footer-brand p {
+    color: var(--t-secondary);
+    font-style: italic;
 }
 
-main {
-    flex: 1;
-    padding-top: 120px;
-    /* Space for fixed header */
-    padding-bottom: 60px;
+.footer-links {
+    display: flex;
+    gap: 80px;
 }
 
-.footer {
+.col h3 {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--c-gold);
+    margin-bottom: 24px;
+}
+
+.col a {
+    display: block;
+    color: var(--t-secondary);
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+    transition: color 0.3s;
+}
+
+.col a:hover {
+    color: var(--t-primary);
+    padding-left: 4px;
+    /* subtle shift */
+}
+
+.footer-bottom {
     text-align: center;
-    padding: 40px 0;
-    color: var(--color-text-muted);
-    font-size: 0.9rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    color: #555;
+    font-size: 0.8rem;
+    padding-top: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
 }

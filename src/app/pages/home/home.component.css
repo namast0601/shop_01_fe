@@ -1,10 +1,39 @@
-.hero {
+/* Page Layout */
+.home-container {
+    padding-top: var(--header-height);
+    min-height: 100vh;
+}
+
+.section {
+    padding: 120px 0;
     position: relative;
-    min-height: 90vh;
+}
+
+.section-label {
+    display: block;
+    font-family: var(--font-sans);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 0.75rem;
+    color: var(--t-secondary);
+    margin-bottom: 16px;
+}
+
+.section-title {
+    font-size: 3rem;
+    margin-bottom: 40px;
+}
+
+/* HERO SECTION */
+.hero-section {
+    height: 100vh;
+    margin-top: calc(-1 * var(--header-height));
+    /* Fullscreen */
+    position: relative;
     display: flex;
     align-items: center;
+    justify-content: center;
     overflow: hidden;
-    padding-top: 80px;
 }
 
 .hero-bg {
@@ -14,97 +43,495 @@
     width: 100%;
     height: 100%;
     z-index: -1;
+    background: radial-gradient(circle at center, #2a231d, #0f0c0a);
 }
 
-.glow {
+.bg-texture {
     position: absolute;
+    width: 100%;
+    height: 100%;
+    /* Optional: Place a faint background image of temple/wood here */
+    opacity: 0.3;
+}
+
+/* Smoke Animation */
+.smoke-layer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.05), transparent 60%);
+    filter: blur(40px);
     border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0.6;
-    animation: float 10s infinite ease-in-out alternate;
+    animation: drift 20s infinite linear;
 }
 
-.glow-1 {
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, var(--color-primary), transparent 70%);
-    top: -100px;
-    right: -100px;
+.smoke-1 {
+    animation-duration: 25s;
+    transform: translate(-50%, -50%) scale(1);
 }
 
-.glow-2 {
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, var(--color-accent), transparent 70%);
-    bottom: -50px;
-    left: -50px;
-    animation-delay: -5s;
+.smoke-2 {
+    animation-duration: 35s;
+    animation-direction: reverse;
+    background: radial-gradient(circle, rgba(160, 160, 160, 0.03), transparent 50%);
 }
 
-@keyframes float {
+@keyframes drift {
     0% {
-        transform: translate(0, 0) scale(1);
+        transform: translate(-50%, -50%) rotate(0deg) scale(1);
+    }
+
+    50% {
+        transform: translate(-40%, -60%) rotate(180deg) scale(1.2);
     }
 
     100% {
-        transform: translate(30px, 30px) scale(1.1);
+        transform: translate(-50%, -50%) rotate(360deg) scale(1);
     }
 }
 
 .hero-content {
     position: relative;
-    z-index: 1;
-    max-width: 800px;
+    z-index: 2;
+    text-align: center;
+    width: 100%;
+}
+
+.hero-slogan-vertical {
+    position: absolute;
+    left: 60px;
+    top: 50%;
+    transform: translateY(-50%) rotate(-90deg);
+    font-family: var(--font-serif);
+    letter-spacing: 0.3em;
+    font-size: 0.9rem;
+    color: var(--t-secondary);
+    opacity: 0.6;
+    white-space: nowrap;
 }
 
 .hero-title {
     font-size: 5rem;
-    margin-bottom: 24px;
     line-height: 1.1;
-    letter-spacing: -0.03em;
+    margin-bottom: 24px;
 }
 
-.hero-subtitle {
-    font-size: 1.25rem;
-    color: var(--color-text-muted);
-    max-width: 600px;
-    margin-bottom: 40px;
+.block-reveal {
+    display: block;
 }
 
+.hero-desc {
+    font-size: 1.1rem;
+    color: var(--t-secondary);
+    max-width: 500px;
+    margin: 0 auto 40px;
+}
+
+/* Actions */
 .hero-actions {
     display: flex;
-    gap: 20px;
+    justify-content: center;
+    gap: 24px;
 }
 
-/* Features */
-.features {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    padding-bottom: 80px;
+.btn {
+    padding: 14px 32px;
+    font-family: var(--font-sans);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.8rem;
+    transition: all 0.3s var(--ease-cinematic);
 }
 
-.feature-card {
-    padding: 40px;
-    transition: transform 0.3s var(--ease-spring);
+.btn-outline {
+    border: 1px solid var(--c-gold);
+    color: var(--c-gold);
 }
 
-.feature-card:hover {
-    transform: translateY(-10px);
-    background: rgba(255, 255, 255, 0.05);
+.btn-outline:hover {
+    background: var(--c-gold);
+    color: #000;
+    box-shadow: 0 0 30px rgba(198, 168, 124, 0.3);
 }
 
-.feature-icon {
-    font-size: 40px;
-    color: var(--color-primary);
-    margin-bottom: 20px;
+.btn-text {
+    color: var(--t-primary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
-.feature-card h3 {
+.btn-text .material-icons {
     font-size: 1.5rem;
-    margin-bottom: 12px;
 }
 
-.feature-card p {
-    color: var(--color-text-muted);
+.scroll-indicator {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    opacity: 0.6;
+}
+
+.scroll-indicator .line {
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom, var(--c-gold), transparent);
+}
+
+.scroll-indicator .text {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+}
+
+/* PRODUCT HIGHLIGHT */
+.product-highlight {
+    background: #15110e;
+}
+
+.header-block {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+/* Scroller Controls */
+/* Scroller Controls */
+.scroller-wrapper {
+    position: relative;
+    max-width: 100%;
+    padding: 0 60px;
+    /* Increased space for buttons */
+}
+
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--c-gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s;
+}
+
+.nav-btn:hover {
+    background: var(--c-gold);
+    color: #000;
+}
+
+.nav-btn.prev {
+    left: 10px;
+}
+
+.nav-btn.next {
+    right: 10px;
+}
+
+.product-scroller {
+    display: flex;
+    gap: 20px;
+    /* Reduced gap */
+    padding: 0 0 40px;
+    /* Remove side padding */
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scroll-snap-type: x mandatory;
+}
+
+.product-scroller::-webkit-scrollbar {
+    display: none;
+}
+
+.product-item {
+    flex-shrink: 0;
+    position: relative;
+    /* Responsive Calculation */
+    width: 260px;
+    /* Safe fallback */
+    scroll-snap-align: start;
+}
+
+/* Responsive Breakpoints for Products */
+@media (min-width: 1400px) {
+    .product-item {
+        width: calc(20% - 16px);
+        /* Fit 5 items */
+        min-width: 0;
+    }
+}
+
+@media (max-width: 1399px) and (min-width: 1100px) {
+    .product-item {
+        width: calc(25% - 15px);
+        /* Fit 4 */
+    }
+}
+
+@media (max-width: 1099px) and (min-width: 768px) {
+    .product-item {
+        width: calc(33.333% - 14px);
+        /* Fit 3 */
+    }
+}
+
+@media (max-width: 767px) {
+    .product-item {
+        width: calc(85% - 10px);
+        /* Fit 1 plus peek */
+        min-width: 260px;
+    }
+
+    .scroller-wrapper {
+        padding: 0 20px;
+    }
+
+    .nav-btn {
+        display: none;
+    }
+}
+
+.product-visual {
+    height: 400px;
+    background: #1e1915;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: background 0.5s;
+    overflow: hidden;
+}
+
+.product-item:hover .product-visual {
+    background: #241e19;
+}
+
+/* Product Image (Replaces 3D Box) */
+.product-img {
+    height: 80%;
+    width: auto;
+    object-fit: contain;
+    z-index: 2;
+    transition: transform 0.6s var(--ease-slow), filter 0.6s;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
+}
+
+.product-item:hover .product-img {
+    transform: translateY(-10px) scale(1.05);
+    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.6));
+}
+
+.smoke-hint {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100px;
+    height: 200px;
+    background: radial-gradient(ellipse, rgba(255, 255, 255, 0.1), transparent 70%);
+    filter: blur(20px);
+    opacity: 0;
+    transition: opacity 0.8s;
+    transform: translate(-50%, -80%);
+}
+
+.product-item:hover .smoke-hint {
+    opacity: 1;
+}
+
+.product-info h3 {
+    font-size: 1.25rem;
+    margin-bottom: 4px;
+}
+
+
+.action-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 12px;
+}
+
+.price {
+    color: var(--c-gold);
+    font-family: var(--font-mono);
+    font-size: 1rem;
+}
+
+.btn-add-cart {
+    background: transparent;
+    border: 1px solid rgba(198, 168, 124, 0.3);
+    color: var(--c-gold);
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.btn-add-cart:hover {
+    background: var(--c-gold);
+    color: #1a1510;
+    border-color: var(--c-gold);
+    box-shadow: 0 4px 12px rgba(198, 168, 124, 0.2);
+}
+
+.btn-add-cart .material-icons {
+    font-size: 16px;
+}
+
+/* RITUAL SECTION */
+.ritual-section {
+    padding: 0;
+}
+
+.ritual-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 80vh;
+}
+
+.ritual-visual {
+    position: relative;
+    overflow: hidden;
+}
+
+.ritual-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: sepia(20%) contrast(1.1);
+}
+
+.ritual-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px;
+    background: #181410;
+}
+
+.text-reveal {
+    font-size: 1.1rem;
+    color: var(--t-secondary);
+    line-height: 1.8;
+    margin: 32px 0;
+    max-width: 450px;
+}
+
+.btn-link {
+    color: var(--c-gold);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* PHILOSOPHY */
+.philosophy-section {
+    text-align: center;
+    background: linear-gradient(to bottom, #110e0b, #1a1510);
+}
+
+.philosophy-timeline {
+    display: flex;
+    justify-content: space-between;
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.philosophy-timeline::before {
+    content: '';
+    position: absolute;
+    top: 24px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    z-index: 0;
+}
+
+.philo-item {
+    position: relative;
+    z-index: 1;
+    background: #1a1510;
+    /* Mask line */
+    padding: 0 20px;
+    text-align: center;
+    flex: 1;
+}
+
+.year {
+    font-family: var(--font-serif);
+    font-size: 3rem;
+    color: rgba(255, 255, 255, 0.05);
+    font-weight: 700;
+    margin-bottom: 16px;
+    transition: color 0.5s;
+}
+
+.philo-item:hover .year {
+    color: var(--c-gold);
+}
+
+.philo-item h3 {
+    font-size: 1.25rem;
+    margin-bottom: 12px;
+    color: var(--t-primary);
+}
+
+.philo-item p {
+    font-size: 0.9rem;
+    color: var(--t-secondary);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 3rem;
+    }
+
+    .ritual-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .ritual-visual {
+        height: 400px;
+    }
+
+    .philosophy-timeline {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .philosophy-timeline::before {
+        width: 1px;
+        height: 100%;
+        top: 0;
+        left: 50%;
+    }
 }
