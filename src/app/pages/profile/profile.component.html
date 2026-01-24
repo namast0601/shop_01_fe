@@ -1,0 +1,174 @@
+<div class="profile-page">
+    <!-- Decorative Background (Embers only) -->
+    <div class="decor-background">
+        <div class="embers">
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+        </div>
+    </div>
+
+    <div class="container fade-in-up">
+        <div class="profile-layout">
+            <!-- Sidebar -->
+            <aside class="profile-sidebar glass-panel">
+                <div class="user-brief">
+                    <div class="avatar-circle">
+                        <span>N</span>
+                    </div>
+                    <div class="user-name">Namast</div>
+                    <div class="user-role">Thành viên Hạng Vàng</div>
+                </div>
+
+                <nav class="sidebar-nav">
+                    <a [class.active]="activeTab === 'info'" (click)="activeTab = 'info'">
+                        <span class="material-icons">person</span> Thông tin cá nhân
+                    </a>
+                    <a [class.active]="activeTab === 'orders'" (click)="activeTab = 'orders'">
+                        <span class="material-icons">history</span> Lịch sử đơn hàng
+                    </a>
+                    <a [class.active]="activeTab === 'address'" (click)="activeTab = 'address'">
+                        <span class="material-icons">place</span> Sổ địa chỉ
+                    </a>
+                    <a class="logout-link" routerLink="/login">
+                        <span class="material-icons">logout</span> Đăng xuất
+                    </a>
+                </nav>
+            </aside>
+
+            <!-- Main Content Area -->
+            <main class="profile-content glass-panel">
+                @if (activeTab === 'info') {
+                <div class="content-header">
+                    <h2 class="serif-italic text-gold">Hồ Sơ Của Tôi</h2>
+                    <p>Quản lý thông tin hồ sơ để bảo mật tài khoản</p>
+                </div>
+
+                <form class="profile-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Tên đăng nhập</label>
+                            <input type="text" value="namast_zen" readonly class="zen-input disabled">
+                        </div>
+                        <div class="form-group">
+                            <label>Họ và tên</label>
+                            <input type="text" value="Namast" class="zen-input">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" value="namast@example.com" class="zen-input">
+                        </div>
+                        <div class="form-group">
+                            <label>Số điện thoại</label>
+                            <input type="tel" value="0987654321" class="zen-input">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Giới tính</label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="gender" checked> Nam
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="gender"> Nữ
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="gender"> Khác
+                            </label>
+                        </div>
+                    </div>
+
+                    <button type="button" class="btn-save">Lưu Thay Đổi</button>
+                </form>
+                }
+
+                @if (activeTab === 'orders') {
+                <div class="content-header">
+                    <h2 class="serif-italic text-gold">Đơn Hàng Của Tôi</h2>
+                    <p>Theo dõi và quản lý các đơn hàng đã đặt</p>
+                </div>
+
+                <div class="order-list">
+                    <!-- Order Item -->
+                    <div class="order-item">
+                        <div class="order-header">
+                            <span class="order-id">#ORD-2026-001</span>
+                            <span class="order-status delivered">Giao thành công</span>
+                        </div>
+                        <div class="order-body">
+                            <img src="https://thienlocviet.vn/uploads/products/Huong%20tram%20Cao%20cap%2030cm.JPG"
+                                alt="Product">
+                            <div class="order-info">
+                                <h4>Trầm Hương Nụ Cao Cấp</h4>
+                                <p>Phân loại: Nha Trang</p>
+                                <p>x2</p>
+                            </div>
+                            <div class="order-price">
+                                1.200.000₫
+                            </div>
+                        </div>
+                        <div class="order-footer">
+                            <span class="total-label">Thành tiền:</span>
+                            <span class="total-price text-gold">1.200.000₫</span>
+                            <div class="order-actions">
+                                <button class="btn-outline">Mua Lại</button>
+                                <button class="btn-outline">Đánh Giá</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="order-item">
+                        <div class="order-header">
+                            <span class="order-id">#ORD-2026-002</span>
+                            <span class="order-status shipping">Đang vận chuyển</span>
+                        </div>
+                        <div class="order-body">
+                            <img src="https://thienlocviet.vn/uploads/products/tram-huong-dot-dinh-cao.jpg"
+                                alt="Product">
+                            <div class="order-info">
+                                <h4>Lư Xông Trầm Bát Tràng</h4>
+                                <p>Phân loại: Gốm đen</p>
+                                <p>x1</p>
+                            </div>
+                            <div class="order-price">
+                                850.000₫
+                            </div>
+                        </div>
+                        <div class="order-footer">
+                            <span class="total-label">Thành tiền:</span>
+                            <span class="total-price text-gold">850.000₫</span>
+                            <div class="order-actions">
+                                <button class="btn-outline">Theo Dõi</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                }
+
+                @if (activeTab === 'address') {
+                <div class="content-header">
+                    <h2 class="serif-italic text-gold">Địa Chỉ</h2>
+                    <button class="btn-outline small">+ Thêm địa chỉ mới</button>
+                </div>
+
+                <div class="address-card">
+                    <div class="address-info">
+                        <div class="name">Namast <span class="tag default">Mặc định</span></div>
+                        <div class="phone">0987 654 321</div>
+                        <div class="detail">Số 10, Đường Trầm Hương, Quận Hoàn Kiếm, Hà Nội</div>
+                    </div>
+                    <div class="address-actions">
+                        <button class="link-btn">Cập nhật</button>
+                    </div>
+                </div>
+                }
+            </main>
+        </div>
+    </div>
+</div>
