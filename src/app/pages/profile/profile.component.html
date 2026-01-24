@@ -32,6 +32,9 @@
                     <a [class.active]="activeTab === 'address'" (click)="activeTab = 'address'">
                         <span class="material-icons">place</span> Sổ địa chỉ
                     </a>
+                    <a [class.active]="activeTab === 'password'" (click)="activeTab = 'password'">
+                        <span class="material-icons">lock</span> Đổi mật khẩu
+                    </a>
                     <a class="logout-link" routerLink="/login">
                         <span class="material-icons">logout</span> Đăng xuất
                     </a>
@@ -167,6 +170,33 @@
                         <button class="link-btn">Cập nhật</button>
                     </div>
                 </div>
+                }
+                }
+
+                @if (activeTab === 'password') {
+                <div class="content-header">
+                    <h2 class="serif-italic text-gold">Đổi Mật Khẩu</h2>
+                    <p>Bảo mật tài khoản của bạn</p>
+                </div>
+
+                <form class="profile-form" (submit)="changePassword($event)">
+                    <div class="form-group">
+                        <label>Mật khẩu hiện tại</label>
+                        <input type="password" name="currentPass" placeholder="••••••••" class="zen-input">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Mật khẩu mới</label>
+                        <input type="password" name="newPass" placeholder="••••••••" class="zen-input">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Xác nhận mật khẩu mới</label>
+                        <input type="password" name="confirmPass" placeholder="••••••••" class="zen-input">
+                    </div>
+
+                    <button type="submit" class="btn-save">Cập nhật mật khẩu</button>
+                </form>
                 }
             </main>
         </div>
