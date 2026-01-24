@@ -19,7 +19,7 @@ export class ProductDetailComponent implements OnInit {
     product: any = {};
     quantity = 1;
     activeImage = '';
-    activeTab = 'details';
+    openTabs = new Set<string>(['details']);
 
     ngOnInit() {
         this.route.params.subscribe(params => {
@@ -58,6 +58,10 @@ export class ProductDetailComponent implements OnInit {
     }
 
     toggleTab(tab: string) {
-        this.activeTab = (this.activeTab === tab) ? '' : tab;
+        if (this.openTabs.has(tab)) {
+            this.openTabs.delete(tab);
+        } else {
+            this.openTabs.add(tab);
+        }
     }
 }

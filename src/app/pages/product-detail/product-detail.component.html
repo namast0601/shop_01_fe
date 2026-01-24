@@ -62,12 +62,12 @@
                 </div>
 
                 <div class="accordion-section">
-                    <div class="accordion-item" [class.active]="activeTab === 'details'">
+                    <div class="accordion-item" [class.active]="openTabs.has('details')">
                         <div class="accordion-header" (click)="toggleTab('details')">
                             <h3>Chi tiết sản phẩm</h3>
-                            <span class="material-icons">{{activeTab === 'details' ? 'remove' : 'add'}}</span>
+                            <span class="material-icons">{{openTabs.has('details') ? 'remove' : 'add'}}</span>
                         </div>
-                        @if (activeTab === 'details') {
+                        @if (openTabs.has('details')) {
                         <div class="accordion-body">
                             <ul>
                                 <li>Tuổi trầm: 15-20 năm</li>
@@ -79,12 +79,12 @@
                         }
                     </div>
 
-                    <div class="accordion-item" [class.active]="activeTab === 'guide'">
+                    <div class="accordion-item" [class.active]="openTabs.has('guide')">
                         <div class="accordion-header" (click)="toggleTab('guide')">
                             <h3>Hướng dẫn sử dụng</h3>
-                            <span class="material-icons">{{activeTab === 'guide' ? 'remove' : 'add'}}</span>
+                            <span class="material-icons">{{openTabs.has('guide') ? 'remove' : 'add'}}</span>
                         </div>
-                        @if (activeTab === 'guide') {
+                        @if (openTabs.has('guide')) {
                         <div class="accordion-body">
                             <p>Đốt đầu nụ trầm, chờ đốm lửa cháy đỏ rồi thổi tắt nhẹ. Đặt lên lư xông hoặc đĩa đốt trầm
                                 chuyên dụng.</p>
