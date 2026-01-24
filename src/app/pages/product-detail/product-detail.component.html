@@ -1,0 +1,98 @@
+<div class="product-detail-page">
+    <div class="container detail-layout">
+        <!-- Breadcrumb -->
+        <div class="breadcrumb fade-in-up">
+            <a routerLink="/products">Sản phẩm</a>
+            <span class="separator">/</span>
+            <span class="current">{{product.name}}</span>
+        </div>
+
+        <div class="product-main">
+            <!-- Left: Image Gallery -->
+            <div class="product-visual fade-in-up">
+                <div class="main-image-container glass-panel">
+                    <div class="smoke-overlay"></div>
+                    <img [src]="activeImage" [alt]="product.name" class="main-image">
+                </div>
+                <div class="thumbnail-list">
+                    @for (img of product.images; track img) {
+                    <div class="thumbnail glass-panel" [class.active]="activeImage === img" (click)="activeImage = img">
+                        <img [src]="img" alt="Thumbnail">
+                    </div>
+                    }
+                </div>
+            </div>
+
+            <!-- Right: Info -->
+            <div class="product-info fade-in-up" style="animation-delay: 0.2s;">
+                <span class="product-type text-gold">{{product.type}}</span>
+                <h1 class="product-title serif-italic">{{product.name}}</h1>
+
+                <div class="price-section">
+                    <span class="price">{{product.price | currency:'VND'}}</span>
+                    <span class="status available">Còn hàng</span>
+                </div>
+
+                <p class="description">{{product.description}}</p>
+
+                <div class="divider"></div>
+
+                <div class="actions">
+                    <div class="quantity-selector glass-panel">
+                        <button (click)="quantity = quantity > 1 ? quantity - 1 : 1">-</button>
+                        <input type="number" [value]="quantity" readonly>
+                        <button (click)="quantity = quantity + 1">+</button>
+                    </div>
+
+                    <button class="add-to-cart-btn" (click)="addToCart()">
+                        <span class="material-icons">shopping_bag</span>
+                        THÊM VÀO GIỎ
+                    </button>
+                </div>
+
+                <div class="meta-info">
+                    <div class="meta-item">
+                        <span class="label">Mã sản phẩm:</span>
+                        <span class="value">{{product.id}}</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="label">Xuất xứ:</span>
+                        <span class="value">Khánh Hòa, Việt Nam</span>
+                    </div>
+                </div>
+
+                <div class="accordion-section">
+                    <div class="accordion-item" [class.active]="openTabs.has('details')">
+                        <div class="accordion-header" (click)="toggleTab('details')">
+                            <h3>Chi tiết sản phẩm</h3>
+                            <span class="material-icons">{{openTabs.has('details') ? 'remove' : 'add'}}</span>
+                        </div>
+                        @if (openTabs.has('details')) {
+                        <div class="accordion-body">
+                            <ul>
+                                <li>Tuổi trầm: 15-20 năm</li>
+                                <li>Mùi hương: Ngọt dịu, sâu lắng</li>
+                                <li>Thời gian cháy: 30-45 phút</li>
+                                <li>Số lượng: 40 nụ/hộp</li>
+                            </ul>
+                        </div>
+                        }
+                    </div>
+
+                    <div class="accordion-item" [class.active]="openTabs.has('guide')">
+                        <div class="accordion-header" (click)="toggleTab('guide')">
+                            <h3>Hướng dẫn sử dụng</h3>
+                            <span class="material-icons">{{openTabs.has('guide') ? 'remove' : 'add'}}</span>
+                        </div>
+                        @if (openTabs.has('guide')) {
+                        <div class="accordion-body">
+                            <p>Đốt đầu nụ trầm, chờ đốm lửa cháy đỏ rồi thổi tắt nhẹ. Đặt lên lư xông hoặc đĩa đốt trầm
+                                chuyên dụng.</p>
+                        </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

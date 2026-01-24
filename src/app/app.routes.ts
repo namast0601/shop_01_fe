@@ -6,10 +6,12 @@ import { ProductsComponent } from './pages/products/products.component';
 import { AboutComponent } from './pages/about/about.component';
 import { KnowledgeComponent } from './pages/knowledge/knowledge.component';
 import { ContactComponent } from './pages/contact/contact.component';
+import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'products', component: ProductsComponent },
+  { path: 'products/:id', component: ProductDetailComponent },
   { path: 'about', component: AboutComponent },
   { path: 'knowledge', component: KnowledgeComponent },
   { path: 'contact', component: ContactComponent },
