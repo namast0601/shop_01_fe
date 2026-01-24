@@ -81,6 +81,11 @@
     gap: 40px;
 }
 
+.nav-right nav {
+    display: flex;
+    gap: 40px;
+}
+
 .nav-link {
     font-size: 0.85rem;
     text-transform: uppercase;

@@ -52,7 +52,7 @@
             <div class="product-grid">
                 @for (product of products; track product.id) {
                 <div class="product-card fade-in-up" [style.animation-delay]="product.id * 50 + 'ms'">
-                    <div class="card-visual">
+                    <div class="card-visual" [routerLink]="['/products', product.id]" style="cursor: pointer;">
                         <div class="smoke-overlay"></div>
                         <img [src]="product.image" [alt]="product.name">
                         <div class="card-overlay">
@@ -63,7 +63,8 @@
                     </div>
                     <div class="card-info">
                         <span class="product-type">{{product.type}}</span>
-                        <h3 class="product-name">{{product.name}}</h3>
+                        <h3 class="product-name" [routerLink]="['/products', product.id]" style="cursor: pointer;">
+                            {{product.name}}</h3>
                         <div class="price-row">
                             <span class="price">{{product.price | currency:'VND'}}</span>
                             <button class="btn-add-cart-mini" [class.added]="addedItems.has(product.id)"
