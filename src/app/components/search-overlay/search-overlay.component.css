@@ -1,0 +1,238 @@
+/* Backdrop */
+.search-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    /* Dimmed background */
+    backdrop-filter: blur(4px);
+    /* Light blur on background */
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    /* Build from top */
+    padding-top: 100px;
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Modal Card */
+.search-modal {
+    width: 100%;
+    max-width: 600px;
+    background: rgba(20, 16, 13, 0.95);
+    border: 1px solid rgba(198, 168, 124, 0.2);
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    max-height: 70vh;
+    /* Contain height */
+    overflow: hidden;
+    animation: slideDown 0.4s var(--ease-out-expo);
+    position: relative;
+    margin: 0 20px;
+    /* Spacing on mobile */
+}
+
+.search-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    flex-shrink: 0;
+}
+
+.search-header h2 {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: var(--t-secondary);
+    cursor: pointer;
+    padding: 4px;
+    transition: all 0.3s;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--c-gold);
+    transform: rotate(90deg);
+}
+
+.search-bar-wrapper {
+    position: relative;
+    margin-bottom: 20px;
+    flex-shrink: 0;
+}
+
+.search-icon {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--t-secondary);
+    font-size: 20px;
+}
+
+.zen-search-input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 12px 12px 12px 36px;
+    /* Room for icon */
+    font-size: 1.1rem;
+    color: var(--t-primary);
+    font-family: var(--font-sans);
+    transition: all 0.3s;
+    border-radius: 0;
+}
+
+.zen-search-input:focus {
+    outline: none;
+    border-bottom-color: var(--c-gold);
+}
+
+.zen-search-input::placeholder {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+/* Scrollable Results Area */
+.search-results {
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 8px;
+    /* Room for scrollbar */
+    margin-right: -8px;
+}
+
+/* Custom Scrollbar */
+.search-results::-webkit-scrollbar {
+    width: 4px;
+}
+
+.search-results::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.search-results::-webkit-scrollbar-thumb {
+    background: rgba(198, 168, 124, 0.3);
+    border-radius: 2px;
+}
+
+.search-item {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid transparent;
+    margin-bottom: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    color: inherit;
+}
+
+.search-item:hover {
+    background: rgba(198, 168, 124, 0.08);
+    /* Subtle gold tint */
+    border-color: rgba(198, 168, 124, 0.2);
+}
+
+.search-item img {
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-right: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.item-info {
+    flex: 1;
+}
+
+.item-info h4 {
+    margin: 0 0 4px 0;
+    font-size: 0.95rem;
+    color: var(--t-primary);
+    font-weight: 500;
+}
+
+.item-price {
+    font-size: 0.85rem;
+    font-family: var(--font-mono);
+    color: var(--c-gold);
+}
+
+.arrow {
+    font-size: 18px;
+    opacity: 0;
+    transform: translateX(-5px);
+    transition: all 0.2s;
+    color: var(--t-secondary);
+}
+
+.search-item:hover .arrow {
+    opacity: 1;
+    transform: translateX(0);
+    color: var(--c-gold);
+}
+
+.no-results {
+    text-align: center;
+    color: var(--t-secondary);
+    font-size: 0.9rem;
+    padding: 30px 0;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.4s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

@@ -26,7 +26,7 @@
           <a routerLink="/knowledge" class="nav-link" routerLinkActive="active">Kiến thức</a>
           <a routerLink="/contact" class="nav-link" routerLinkActive="active">Liên hệ</a>
         </nav>
-        <button class="icon-btn search-btn">
+        <button class="icon-btn search-btn" (click)="toggleSearch()">
           <span class="material-icons">search</span>
         </button>
         <a routerLink="/cart" class="icon-btn cart-btn-wrapper">
@@ -92,4 +92,8 @@
     </div>
   </footer>
   <app-toast />
+
+  @if (isSearchOpen) {
+  <app-search-overlay (closeSearch)="toggleSearch()" />
+  }
 </div>

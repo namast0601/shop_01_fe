@@ -1,0 +1,35 @@
+<div class="search-overlay" (click)="close()">
+    <div class="search-modal glass-panel" (click)="$event.stopPropagation()">
+        <div class="search-header">
+            <h2 class="serif-italic text-gold">Tìm Kiếm</h2>
+            <button class="close-btn" (click)="close()">
+                <span class="material-icons">close</span>
+            </button>
+        </div>
+
+        <div class="search-bar-wrapper">
+            <span class="material-icons search-icon">search</span>
+            <input #searchInput type="text" class="zen-search-input" placeholder="Tìm kiếm sản phẩm..."
+                (input)="onSearch($event)" [value]="query()">
+        </div>
+
+        <div class="search-results custom-scrollbar">
+            @if (query() && results().length === 0) {
+            <div class="no-results fade-in-up">
+                <p>Không tìm thấy sản phẩm nào phù hợp.</p>
+            </div>
+            }
+
+            @for (product of results(); track product.id) {
+            <a [routerLink]="['/products', product.id]" (click)="close()" class="search-item fade-in-up">
+                <img [src]="product.image" [alt]="product.name">
+                <div class="item-info">
+                    <h4>{{product.name}}</h4>
+                    <span class="item-price text-gold">{{product.price | number:'1.0-0'}}₫</span>
+                </div>
+                <span class="material-icons arrow">arrow_forward</span>
+            </a>
+            }
+        </div>
+    </div>
+</div>

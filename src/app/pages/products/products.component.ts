@@ -2,8 +2,8 @@ import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CartService, Product } from '../../services/cart.service';
 import { ToastService } from '../../components/toast/toast.component';
-
 import { RouterLink } from '@angular/router';
+import { ProductService } from '../../services/product.service';
 
 @Component({
   selector: 'app-products',
@@ -15,15 +15,10 @@ import { RouterLink } from '@angular/router';
 export class ProductsComponent {
   private cartService = inject(CartService);
   private toastService = inject(ToastService);
+  private productService = inject(ProductService);
 
-  // Mock Products
-  allProducts: Product[] = Array.from({ length: 12 }, (_, i) => ({
-    id: i + 1,
-    name: `Trầm Hương Loại ${i + 1}`,
-    price: (i + 1) * 500000 + 500000,
-    image: 'https://thienlocviet.vn/uploads/products/Huong%20tram%20Cao%20cap%2030cm.JPG',
-    type: i % 2 === 0 ? 'Nha Trang' : 'Quảng Nam'
-  }));
+  // Get Products from Service
+  allProducts: Product[] = [...this.productService.products()];
 
   // Filter State
   products = this.allProducts;
