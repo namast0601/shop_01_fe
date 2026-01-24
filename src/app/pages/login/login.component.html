@@ -1,0 +1,43 @@
+<div class="auth-page">
+    <!-- Decorative Background Elements -->
+    <div class="decor-background">
+        <div class="zen-circle"></div>
+        <div class="smoke-container">
+            <div class="smoke-blob one"></div>
+            <div class="smoke-blob two"></div>
+            <div class="smoke-blob three"></div>
+        </div>
+        <div class="embers">
+            <span></span><span></span><span></span><span></span><span></span>
+        </div>
+    </div>
+
+    <div class="auth-container fade-in-up">
+        <div class="auth-header">
+            <h1 class="serif-italic text-gold">Đăng Nhập</h1>
+            <p class="sub-text">Chào mừng bạn quay trở lại với Tĩnh.</p>
+        </div>
+
+        <form class="auth-form" (submit)="onSubmit($event)">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="example@email.com" class="zen-input">
+            </div>
+
+            <div class="form-group">
+                <label for="password">Mật khẩu</label>
+                <input type="password" id="password" placeholder="••••••••" class="zen-input">
+                <a href="#" class="forgot-pass">Quên mật khẩu?</a>
+            </div>
+
+            <button type="submit" class="btn-auth">
+                <span class="material-icons">arrow_forward</span>
+                ĐĂNG NHẬP
+            </button>
+        </form>
+
+        <div class="auth-footer">
+            <p>Chưa có tài khoản? <a routerLink="/register" class="text-gold">Đăng ký ngay</a></p>
+        </div>
+    </div>
+</div>

@@ -7,6 +7,8 @@ import { AboutComponent } from './pages/about/about.component';
 import { KnowledgeComponent } from './pages/knowledge/knowledge.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
+import { LoginComponent } from './pages/login/login.component';
+import { RegisterComponent } from './pages/register/register.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -17,5 +19,7 @@ export const routes: Routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'cart', component: CartComponent },
   { path: 'checkout', component: CheckoutComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
   { path: '**', redirectTo: '' }
 ];
