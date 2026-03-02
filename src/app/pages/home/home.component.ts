@@ -1,6 +1,7 @@
 import { Component, ElementRef, ViewChild, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CartService, Product } from '../../services/cart.service';
+import { CartService } from '../../services/cart.service';
+import { Product } from '../../models/product.model';
 import { ToastService } from '../../components/toast/toast.component';
 
 @Component({

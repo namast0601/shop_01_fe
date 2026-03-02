@@ -1,6 +1,7 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, computed, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CartService, Product } from '../../services/cart.service';
+import { CartService } from '../../services/cart.service';
+import { Product } from '../../models/product.model';
 import { ToastService } from '../../components/toast/toast.component';
 import { RouterLink } from '@angular/router';
 import { ProductService } from '../../services/product.service';
@@ -17,15 +18,28 @@ export class ProductsComponent {
   private toastService = inject(ToastService);
   private productService = inject(ProductService);
 
-  // Get Products from Service
-  allProducts: Product[] = [...this.productService.products()];
+  // States from service
+  isLoading = this.productService.isLoading;
+  error = this.productService.error;
 
   // Filter State
-  products = this.allProducts;
   categories = ['Tất cả', 'Nha Trang', 'Quảng Nam', 'Trầm Hương Đốt', 'Vòng Tay Trầm'];
-  selectedCategory = 'Tất cả';
-  maxPrice = 10000000;
-  priceFilter = 10000000;
+  selectedCategory = signal('Tất cả');
+  priceFilterBoundary = 10000000;
+  priceFilter = signal(10000000);
+
+  // Reactive Filtered Products
+  products = computed(() => {
+    const all = this.productService.products();
+    const category = this.selectedCategory();
+    const price = this.priceFilter();
+
+    return all.filter(p => {
+      const matchCat = category === 'Tất cả' || p.type === category;
+      const matchPrice = p.price <= price;
+      return matchCat && matchPrice;
+    });
+  });
 
   // Feedback state
   addedItems = new Set<number>();
@@ -41,24 +55,11 @@ export class ProductsComponent {
   }
 
   filterCategory(category: string) {
-    this.selectedCategory = category;
-    this.applyFilters();
+    this.selectedCategory.set(category);
   }
 
   updatePrice(event: Event) {
     const value = (event.target as HTMLInputElement).value;
-    this.priceFilter = Number(value);
-    this.applyFilters();
-  }
-
-  applyFilters() {
-    this.products = this.allProducts.filter(p => {
-      const matchCat = this.selectedCategory === 'Tất cả' ||
-        (this.selectedCategory === 'Nha Trang' && p.type === 'Nha Trang') ||
-        (this.selectedCategory === 'Quảng Nam' && p.type === 'Quảng Nam') ||
-        (this.selectedCategory !== 'Nha Trang' && this.selectedCategory !== 'Quảng Nam'); // Mock fallback
-      const matchPrice = p.price <= this.priceFilter;
-      return matchCat && matchPrice;
-    });
+    this.priceFilter.set(Number(value));
   }
 }

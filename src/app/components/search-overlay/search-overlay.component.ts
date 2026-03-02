@@ -2,7 +2,7 @@ import { Component, EventEmitter, Output, inject, signal, ViewChild, ElementRef,
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { ProductService } from '../../services/product.service';
-import { Product } from '../../services/cart.service';
+import { Product } from '../../models/product.model';
 
 @Component({
     selector: 'app-search-overlay',
@@ -23,7 +23,9 @@ export class SearchOverlayComponent implements AfterViewInit {
     ngAfterViewInit() {
         // Auto-focus input
         setTimeout(() => {
-            this.searchInput.nativeElement.focus();
+            if (this.searchInput) {
+                this.searchInput.nativeElement.focus();
+            }
         }, 100);
     }
 
@@ -32,7 +34,9 @@ export class SearchOverlayComponent implements AfterViewInit {
         this.query.set(value);
 
         if (value.trim()) {
-            this.results.set(this.productService.searchProducts(value));
+            this.productService.searchProducts(value).subscribe(data => {
+                this.results.set(data);
+            });
         } else {
             this.results.set([]);
         }
